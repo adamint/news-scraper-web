@@ -1,8 +1,9 @@
-import {TabPanel} from "@chakra-ui/react";
+import {RouteDisplay} from "./RouteDisplay";
+import {Box} from "@chakra-ui/react";
 
-export default function DisplayPanel({children}) {
-    return <TabPanel w="40%" h="40%" overflowY="scroll" border="1px dashed">
-        <p>test</p>
-        {children}
-    </TabPanel>
+export function DisplayPanel({routes}) {
+    if (!routes || routes.length === 0) return null
+    return <Box>
+        {routes.map(routeObject => <RouteDisplay routeObject={routeObject} key={routeObject.route}/>)}
+    </Box>
 }
